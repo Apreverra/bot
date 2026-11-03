@@ -24,7 +24,7 @@ def main():
     logger.info("tracks found: %d", len(playlist))
 
     ## запуск движка
-    engine = AudioEngine(output_url="udp://127.0.0.1:12345")
+    engine = AudioEngine(output_url="icecast://source:hackme@127.0.0.1:8000/radio.mp3")
     
     ## бесконечный цикл эфира
     logger.info("starting")
@@ -39,7 +39,7 @@ def main():
     except KeyboardInterrupt:
         logger.info("shutdown")
     finally:
-        engine.shutdown()
+        engine.terminate()
 
 if __name__ == "__main__":
     main()
